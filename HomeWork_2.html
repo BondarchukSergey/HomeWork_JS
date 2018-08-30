@@ -14,15 +14,17 @@
     let  newPos = {position: `director`, salary:7777777};
     let  Laura3 = { ...uno, ...trei, newPos };
 
-    document.write( Laura1.name,  ", " + Laura1.age,
-        ", " + Laura1.party, ", " + Laura1.position,  ", " + Laura1.voteFor  +"<br />");
+    document.write( `${Laura1.name}, ${Laura1.age},
+         ${Laura1.party}, ${Laura1.position},  ${Laura1.voteFor} <br />`);
 
-    document.write( Laura2.name,  ", " + Laura2.age,  ", " + Laura2.party,
-        ", " + Laura2.position,  ", " + Laura2.voteFor +"<br />");
+    document.write( `${Laura2.name},  ${Laura2.age},  ${Laura2.party},
+        ${Laura2.position},  ${Laura2.voteFor} <br />`);
 
-    document.write( Laura3.name,  ", " + Laura3.age,  ", " + Laura3.party,
-        ", " + Laura3.position,  ", " + Laura3.voteFor, ", "+ Laura3.newPos.position,
-        ", "+ Laura3.newPos.salary  +"<br />");
+    document.write( `${Laura3.name},  ${Laura3.age},  ${Laura3.party},
+        ${Laura3.position}, ${Laura3.voteFor}, ${Laura3.newPos.position},
+        ${Laura3.newPos.salary} <br />`);
+
+
 
 
 </script>
