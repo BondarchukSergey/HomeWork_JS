@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 4</title>
+
+</head>
+<body>
+    <script>
+
+        function memoize(func) {
+            var memo = {};
+                return (...args) => { args.slice.call(arguments);
+
+                if (args in memo)
+                    return memo[args];
+                else
+                    return (memo[args] = func.apply(this, args));
+
+            };
+        };
+
+       // Функция, находящая сумму чисел от a до b
+       const sumSeq = (a, b) => {
+           document.write('Calculate sum');
+           let r = 0;
+           for (let i = a; i < b; i++) r += i;
+           return r;
+       };
+
+       // Производим мемоизацию функции sumSeq
+       const mSumSeq = memoize(sumSeq);
+
+       document.write('First call mSumSeq(2, 5)'+"<br/>");
+       document.write('Value: ' + mSumSeq(2, 5)+"<br/>"); // Выводит  в консоль "9"
+       document.write('Second call mSumSeq(2, 5)'+"<br/>");
+       document.write('From cache: ' + mSumSeq(2, 5)+"<br/>"); // Выводит в консоль "9"
+       document.write('Call mSumSeq(2, 6)'+"<br/>");
+       document.write('Calculated: ' + mSumSeq(2, 6)); // Выводит в консоль "14"
+
+
+
+    </script>
+
+</body>
+</html>
