@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 5</title>
+
+</head>
+<body>
+    <script>
+
+        function someFunction ({
+                                   orbital= document.write('Введите значение параметра orbital' + "<br/>"),
+                                   secondParam= document.write('Введите значение параметра secondParam' + "<br/>"),
+                                   thirdParam= document.write('Введите значение параметра thirdParam' + "<br/>")
+                               }
+        ) {
+            document.write('Ваши значения orbital=' +orbital +' secondParam='+secondParam +' thirdParam=' +thirdParam +"<br/>")
+        };
+
+
+        someFunction ( {orbital: 'some',secondParam: true, thirdParam: true});
+        document.write("<hr/>");
+
+        someFunction({});
+        document.write("<hr/>");
+
+        someFunction({thirdParam: 3,orbital: 1,secondParam: 2});
+        document.write("<hr/>");
+
+    </script>
+
+</body>
+</html>
