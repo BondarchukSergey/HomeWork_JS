@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 7</title>
+
+</head>
+<body>
+    <script>
+       /* ВОПРОС #7 (pipe-композиция функций + распаковка полей объекта, являющегося параметром функции)
+        Необходимо сделать функцию insert-Raw-to-DataBase, которая как-будь то* записывает данные для записи одной “строки” в БД:
+            “строка”-объектный литерал представлена объектным литералом с пятью полями
+        {first : 'unul',
+            second: 'doua',
+            third: 'trei',
+            fourth: 'patru',
+            afterAll: 'Love only matter'} – то есть это и есть входным параметром функции insert-Raw-to-DataBase. Функция должна быть композицией из трех ничего не знающих друг о друге функций(не могут вызывать друг друга):
+        pre-Check (использует первое поле литерала),
+        start-Transaction-Mark (не использует вообще ни одно поле литерала),
+        do-Insert (использует первые четыре поля),
+        commit-Transaction-Mark (использует пятое поле)
+
+        Последовательность вызовов функций вот такая  (“строка”-объектный литерал должен последовательно передаваться в такой последовательности):
+        pre-Check  à start-Transaction-Mark à do-Insert à commit-Transaction-Mark*/
+
+        var  MyObj={first : 'unul',
+            second: 'doua',
+            third: 'trei',
+            fourth: 'patru',
+            afterAll: 'Love only matter'};
+
+        function preCheck (obj) {
+            document.write(obj["first"]+"<br />");
+                return obj
+        };
+
+       function startTransactionMark (obj){return obj};  //(не использует вообще ни одно поле литерала),
+        function doInsert (obj){
+            document.write(obj["first"] + obj["second"]+obj["third"] +obj["fourth"] +"<br />");
+            return obj
+        }; //(использует первые четыре поля),
+        function commitTransactionMark (obj) {
+            document.write(obj["afterAll"]+"<br />");
+            return obj
+        }; //(использует пятое поле)
+       var insertRawtoDataBase =value=>commitTransactionMark(doInsert(startTransactionMark(preCheck(value))));
+
+
+
+        document.write(insertRawtoDataBase(MyObj)+"<br />");
+
+
+    </script>
+
+</body>
+</html>
