@@ -24,27 +24,49 @@
         Последовательность вызовов функций вот такая  (“строка”-объектный литерал должен последовательно передаваться в такой последовательности):
         pre-Check  à start-Transaction-Mark à do-Insert à commit-Transaction-Mark*/
 
-        var  MyObj={first : 'unul',
+       var  MyObj={first : 'unul',
             second: 'doua',
             third: 'trei',
             fourth: 'patru',
             afterAll: 'Love only matter'};
 
-        function preCheck (obj) {
+       function pipe(...fns) {
+           return param => fns.reduce(
+               (result, fn) => fn(result),
+               param
+           )
+       };
+
+       
+       function preCheck (obj) {
+            
             document.write(obj["first"]+"<br />");
                 return obj
         };
 
        function startTransactionMark (obj){return obj};  //(не использует вообще ни одно поле литерала),
-        function doInsert (obj){
-            document.write(obj["first"] + obj["second"]+obj["third"] +obj["fourth"] +"<br />");
+
+       function doInsert (obj){
+            document.write(obj["first"]+obj["second"]+obj["third"]+obj["fourth"] +"<br />");
             return obj
+
+            
         }; //(использует первые четыре поля),
-        function commitTransactionMark (obj) {
+
+       function commitTransactionMark (obj) {
             document.write(obj["afterAll"]+"<br />");
             return obj
         }; //(использует пятое поле)
-       var insertRawtoDataBase =value=>commitTransactionMark(doInsert(startTransactionMark(preCheck(value))));
+
+       function insertRawtoDataBase (value) {
+           return pipe(
+                   preCheck,
+                   startTransactionMark,
+                   doInsert,
+                   commitTransactionMark
+       )
+           (value)
+       };
 
 
 
