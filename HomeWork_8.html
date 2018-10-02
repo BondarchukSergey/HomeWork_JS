@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 8</title>
+
+</head>
+<body>
+    <script>
+    //Написать функцию, которая при вызове переписывает себя
+var arg='Hello';
+
+function f(a) {
+    if (a !==undefined) {
+        f = function () {
+            document.write("Это первая функция"+"<br />")
+        }
+    } else {
+        f = function () {
+            document.write("Это вторая функция" +"<br />")
+        }
+    }
+    return f();
+}
+
+document.write(f +"<br />");
+f();
+document.write(f +"<br />");
+
+    </script>
+
+</body>
+</html>
