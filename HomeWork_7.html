@@ -24,7 +24,7 @@
         Последовательность вызовов функций вот такая  (“строка”-объектный литерал должен последовательно передаваться в такой последовательности):
         pre-Check  à start-Transaction-Mark à do-Insert à commit-Transaction-Mark*/
 
-       var  MyObj={first : 'unul',
+       var  MyObj={first: 'unul',
             second: 'doua',
             third: 'trei',
             fourth: 'patru',
@@ -38,24 +38,33 @@
        };
 
        
-       function preCheck (obj) {
+       function preCheck ({first,
+                ...rest}={}) {
             
-            document.write(obj["first"]+"<br />");
-                return obj
+            document.write(first+"<br />");
+                return {first, ...rest}
         };
 
-       function startTransactionMark (obj){return obj};  //(не использует вообще ни одно поле литерала),
+       function startTransactionMark ({...rest}={}){return {...rest}};  //(не использует вообще ни одно поле литерала),
 
-       function doInsert (obj){
-            document.write(obj["first"]+obj["second"]+obj["third"]+obj["fourth"] +"<br />");
-            return obj
+       function doInsert ({first,
+                second,
+                third,
+                fourth,
+                ...rest}={} ){
+            document.write(first+" "+second+" "+third+" "+fourth+"<br />");
+            return {first,
+                second,
+                third,
+                fourth,
+                ...rest}
 
             
         }; //(использует первые четыре поля),
 
-       function commitTransactionMark (obj) {
-            document.write(obj["afterAll"]+"<br />");
-            return obj
+       function commitTransactionMark ({afterAll, ...rest}={}) {
+            document.write(afterAll+"<br />");
+            return {afterAll,...rest}
         }; //(использует пятое поле)
 
        function insertRawtoDataBase (value) {
