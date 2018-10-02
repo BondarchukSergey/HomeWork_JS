@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 9</title>
+
+</head>
+<body>
+    <script>
+    /*Напишите функцию, которая на вход принимает этот объект, 
+    а на выходе возвращает firstName, при этом в ней не должно 
+    быть никаких команд обращения через точку к полям объекта 
+    (то есть не должно быть someSystemUser.поле)*/
+    
+let someSystemUser = {
+  id: 43,
+  systemName: 'Vanja',
+  fullName: {
+  	firstName: 'Ivan',
+  	lastName: 'Doe'
+  }
+};
+
+function getUserFirstName ({fullName: {firstName: name}}) 
+{
+   
+        document.write(name);
+        return name;
+        };
+
+getUserFirstName(someSystemUser);
+
+</script>
+
+</body>
+</html>
