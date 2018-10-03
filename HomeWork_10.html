@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 10</title>
+
+</head>
+<body>
+    <script>
+    /*
+    Напишите функцию, которая прнимает объект zradaOrPeremoha на вход, 
+    и ищет в нем поле с названием glory2Ukraine , и найдя его – выводит 
+    его содержимое на консоль, если же поля нет – возвращает объект такой 
+    же  как и zradaOrPeremoha, но с добавленным полем 
+    glory2Ukraine : ‘Glory to heroes !’
+*/
+    
+let zradaOrPeremoha = {
+    peremoha: 'Yes'
+
+};
+
+function findGlory2Ukraine (obj) 
+{
+    if ("glory2Ukraine" in obj) {
+        
+        document.write(obj["glory2Ukraine"]+"<br />");
+    } 
+    else {
+       
+        obj["glory2Ukraine"]='Glory to heroes !'
+        return obj;   
+    }
+   
+   
+};
+document.write(zradaOrPeremoha.glory2Ukraine+"<br />");
+findGlory2Ukraine(zradaOrPeremoha);
+document.write(zradaOrPeremoha.glory2Ukraine+"<br />");
+</script>
+
+</body>
+</html>
