@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 11</title>
+
+</head>
+<body>
+    <script>
+    /*
+    Создайте объект, у которого будет N полей - поля с названиями 
+    Field1,Field3, Field5,Field7 … Field Nнечет  - то есть 
+    структура названия -  Field||<нечетное значение счетчика>.
+
+*/
+    
+let zradaOrPeremoha = {
+    peremoha: function (x){
+        for (var i = 0; i <= x; i++) {
+
+if (i % 2 !== 0) {
+    
+    this["Field"+i]= i
+    
+}
+}
+    }
+
+};
+
+obj=new zradaOrPeremoha.peremoha(15);
+for (var key in obj){
+
+document.write(obj[key]+"<br />");
+}
+
+</script>
+
+</body>
+</html>
