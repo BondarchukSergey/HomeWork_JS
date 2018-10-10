@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 12</title>
+
+</head>
+
+<body>
+    <script>
+        /*
+        есть объектный литерал:
+    var user = {
+        login: 'admin',
+        password: '123',
+        getLogin: function() {
+            return this.login;
+        },
+        getPassword: function() {
+            return this.password;
+        }
+    }
+    Необходимо так переписать данный объект, чтобы сделать его свойства 
+    login и password закрытыми  и доступ к ним осуществлялся 
+    только через методы getLogin и getPassword (все это конечно же, 
+    не прибегая к TypeScript, а на чистом JS)
+    
+    
+    */
+
+        var user = (function () {
+            
+            let login = 'admin';
+            let password =  '123';
+            return {
+            getlogin: function () {
+                
+            
+                return login;
+            },
+            getpassword: function () {
+                return password;
+            }
+            };
+        }());
+
+        document.write(user.login + "<br />");
+        document.write(user.getlogin () + "<br />");
+
+        document.write(user.password+ "<br />");
+        document.write(user.getpassword() + "<br />");
+        
+        document.write(user + "<br />");
+       
+
+
+    </script>
+
+</body>
+
+</html>
